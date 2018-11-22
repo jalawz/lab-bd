@@ -26,6 +26,7 @@
 			    <td th:text="${candidato.nome}" />
 			    <td th:text="${candidato.partido}" />
 			    <td th:text="${candidato.sigla}" />
+				<td><a th:href="@{'/candidato/' + ${candidato.id}}" th:text="Editar" class="btn btn-danger"></a></td>
 			</tr>
 		  </tbody>
 		</table>

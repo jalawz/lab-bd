@@ -27,7 +27,7 @@ public class CandidatoController {
 	@PostMapping(value = "/cadastrar-candidato", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public String cadastroCandidato(Candidato candidato) {
 		this.service.cadastrar(candidato);
-		return "redirect:cadastrar-candidato";
+		return "redirect:listar-candidatos";
 	}
 	
 	@GetMapping("/listar-candidatos")

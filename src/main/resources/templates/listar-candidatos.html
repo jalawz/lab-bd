@@ -26,7 +26,12 @@
 			    <td th:text="${candidato.nome}" />
 			    <td th:text="${candidato.partido}" />
 			    <td th:text="${candidato.sigla}" />
-				<td><a th:href="@{'/candidato/' + ${candidato.id}}" th:text="Editar" class="btn btn-danger"></a></td>
+				<td><a th:href="@{'/candidatos/' + ${candidato.id}}" th:text="Editar" class="btn btn-success">Editar</a></td>
+				<td>
+					<form th:action="@{'/candidatos/' + ${candidato.id} + '/excluir' }" method="post">
+						<input type="submit" class="btn btn-danger" th:value="Remover">
+					</form>
+				</td>
 			</tr>
 		  </tbody>
 		</table>

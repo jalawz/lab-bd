@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css"	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+
+<div th:insert="partials/navbar.html"></div>
+
+<div class="container">
+    <h1>Escolha seu Candidato</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Partido</th>
+            <th>Sigla</th>
+            <th>Votos</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="candidato: ${candidatos}">
+            <td th:text="${candidato.nome}" />
+            <td th:text="${candidato.partido}" />
+            <td th:text="${candidato.sigla}" />
+            <td th:text="${candidato.votos.size()}" />
+            <td th:text="@{${#numbers.formatDecimal(candidato.votos.size() / totalVotos * 100, 0, 2)} + '%'}" />
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

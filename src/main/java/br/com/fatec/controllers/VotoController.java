@@ -48,7 +48,7 @@ public class VotoController {
 
     @GetMapping("/apuracao")
     public String getApuracao(ModelMap model) {
-        Integer totalVotos = jdbcTemplate.queryForObject("select count(*) from voto", Integer.class);
+        Double totalVotos = jdbcTemplate.queryForObject("select count(*) from voto", Double.class);
         List<Candidato> candidatos = candidatoService.findAll();
         model.put("totalVotos", totalVotos);
         model.put("candidatos", candidatos);

@@ -1,0 +1,42 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css"	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+
+<div th:insert="partials/navbar.html"></div>
+
+<div class="container">
+    <h1>Escolha seu Candidato</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Partido</th>
+            <th>Sigla</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="candidato: ${candidatos}">
+            <td th:text="${candidato.nome}" />
+            <td th:text="${candidato.partido}" />
+            <td th:text="${candidato.sigla}" />
+            <td>
+                <form method="post" th:action="@{'/votar/' + ${candidato.id} }">
+                    <input type="submit" th:value="Votar" class="btn btn-primary">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/apuracao" class="btn btn-success">Apuraçao de Votos</a>
+</div>
+</body>
+</html>

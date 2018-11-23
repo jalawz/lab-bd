@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class CandidatoController {
 	
@@ -31,7 +33,8 @@ public class CandidatoController {
 	@GetMapping("/candidatos")
 	public ModelAndView listarCandidatos() {
 		ModelAndView modelAndView = new ModelAndView("listar-candidatos");
-		modelAndView.addObject("candidatos", this.service.findAll());
+		List<Candidato> candidatos = this.service.findAll();
+		modelAndView.addObject("candidatos", candidatos);
 		return modelAndView;
 	}
 

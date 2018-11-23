@@ -1,10 +1,8 @@
 package br.com.fatec.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Candidato {
@@ -16,6 +14,9 @@ public class Candidato {
 	private String nome;
 	private String partido;
 	private Integer sigla;
+
+	@OneToMany
+	private List<Voto> votos = new ArrayList<>();
 
 	public Candidato() {
 		super();
@@ -61,4 +62,11 @@ public class Candidato {
 		this.sigla = sigla;
 	}
 
+	public List<Voto> getVotos() {
+		return votos;
+	}
+
+	public void setVotos(List<Voto> votos) {
+		this.votos = votos;
+	}
 }
